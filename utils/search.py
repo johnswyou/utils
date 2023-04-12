@@ -57,3 +57,27 @@ def find_files_with_extension(extension, path='.'):
             if filename.endswith(extension):
                 file_paths.append(os.path.join(root, filename))
     return file_paths
+
+def count_string_occurrences(file_path, target_string):
+    """
+    Counts the number of occurrences of a string in a file.
+    """
+    count = 0
+    with open(file_path, 'r') as file:
+        for line in file:
+            count += line.count(target_string)
+    return count
+
+import pandas as pd
+
+def count_missing_values(df):
+    """
+    Count the number of missing values in each column of a pandas data frame
+    
+    Args:
+    - df: pandas data frame
+    
+    Returns:
+    - pandas series with column names as index and number of missing values as values
+    """
+    return df.isnull().sum()
